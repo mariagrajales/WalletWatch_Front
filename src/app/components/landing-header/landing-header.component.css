@@ -1,0 +1,28 @@
+.landing-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo img {
+  height: 40px;
+}
+
+.auth-buttons {
+  display: flex;
+  gap: 15px;
+}
+
+.register-button {
+  background-color: #7767DF !important;
+  color: #ffffff !important;
+  border-radius: 14px !important;
+  border: none !important;
+}
+
+.register-button:hover {
+  background-color: #5a50b5 !important;
+}

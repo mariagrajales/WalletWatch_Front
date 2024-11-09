@@ -1,0 +1,32 @@
+<div class="register-container">
+  <div class="register-box">
+    <h2>Crea una cuenta</h2>
+    <p>Empieza a gestionar y optimizar tus ahorros sin costo alguno.</p>
+
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-row">
+        <input type="text" placeholder="Nombre" [(ngModel)]="user.nombre" name="nombre" required />
+        <input type="email" placeholder="Email Address" [(ngModel)]="user.email" name="email" required />
+      </div>
+
+      <div class="form-row">
+        <input type="text" placeholder="Apellido P" [(ngModel)]="user.apellidoP" name="apellidoP" required />
+        <input type="tel" placeholder="Teléfono" [(ngModel)]="user.telefono" name="telefono" required />
+      </div>
+
+      <div class="form-row">
+        <input type="text" placeholder="Apellido M" [(ngModel)]="user.apellidoM" name="apellidoM" required />
+        <input type="password" placeholder="Contraseña" [(ngModel)]="user.password" name="password" required />
+      </div>
+
+      <div class="form-row">
+        <input type="text" placeholder="Nombre de usuario" [(ngModel)]="user.username" name="username" required />
+        <input type="password" placeholder="Confirmar Contraseña" [(ngModel)]="user.confirmPassword" name="confirmPassword" required />
+      </div>
+
+      <button type="submit">Crear cuenta</button>
+    </form>
+
+    <p>¿Ya tienes una cuenta? <a routerLink="/login">Inicia sesión</a></p>
+  </div>
+</div>

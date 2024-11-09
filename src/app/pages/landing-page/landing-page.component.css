@@ -1,0 +1,98 @@
+/* Fondo principal de la landing page */
+.landing-container {
+  display: flex;
+  background-color: #7767DF; /* Color de fondo */
+  color: #ffffff;
+  min-height: 70vh;
+  padding: 40px;
+}
+
+/* Estilos para la sección izquierda */
+.left-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
+}
+
+.title h1 {
+  font-size: 2.5em;
+  margin: 0;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.description p {
+  font-size: 1.2em;
+  margin-top: 15px;
+  line-height: 1.5;
+  color: #dcdcdc;
+}
+
+/* Estilos para la sección derecha */
+.right-section {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.right-section img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Estilo de la sección de servicios */
+.services-section {
+  min-height: 70vh;
+  background-color: #ffffff; /* Fondo blanco */
+  color: #2B1D6F;
+  padding: 150px 20px;
+  text-align: center;
+}
+
+.services-section h2 {
+  font-size: 1.8em;
+  margin-bottom: 20px;
+  color: #2B1D6F; /* Color del texto del título */
+}
+
+.service-cards {
+  display: flex;
+
+  justify-content: center;
+  gap: 150px; /* Reduce el espacio entre las tarjetas */
+  flex-wrap: wrap;
+  padding: 50px 20px; /* Ajusta el espacio a los lados */
+}
+
+
+.card {
+  background-color: #ffffff;
+  color: #2B1D6F;
+  padding: 20px;
+  border-radius: 34px;
+  width: 190px;
+  height: 250px;
+  border: 1px solid rgba(43, 29, 111, 0.3); /* Borde sutil del color solicitado */
+  box-shadow: 0 4px 8px rgba(43, 29, 111, 0.7); /* Sombra con el color especificado */
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Centrado vertical */
+}
+
+
+.card i {
+  font-size: 3.5em;
+  margin-bottom: 10px;
+  color: #2B1D6F;
+}
+
+.card p {
+  font-size: 18px;
+  margin: 0;
+  color: #2B1D6F;
+}

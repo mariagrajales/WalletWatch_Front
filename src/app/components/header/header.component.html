@@ -1,1 +1,20 @@
-<p>header works!</p>
+<header class="main-header">
+  <div class="left-section">
+    <img src="assets/Logo-WalletWatch.png" alt="WalletWatch Logo" class="logo" />
+  </div>
+  <div class="right-section">
+    <nav class="main-nav">
+      <a href="#">Metas de Ahorro</a>
+      <a href="#">Presupuesto/Gastos</a>
+      <a href="#">Resumen</a>
+      <nz-avatar nzIcon="user" nzSize="large"></nz-avatar>
+      <button class="hamburger-menu" (click)="toggleMenu()">☰</button>
+    </nav>
+  </div>
+
+  <div *ngIf="menuOpen" class="dropdown-menu">
+    <a href="#">Perfil</a>
+    <a href="#">Cerrar sesión</a>
+    <a href="#">Ayuda</a>
+  </div>
+</header>
