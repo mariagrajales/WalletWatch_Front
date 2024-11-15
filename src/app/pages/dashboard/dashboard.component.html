@@ -1,1 +1,45 @@
-<p>dashboard works!</p>
+<div class="dashboard-header">
+  <div class="text-section">
+    <h1>Transforma tus sueños en logros, <span class="highlight">un ahorro a la vez.</span></h1>
+    <button class="add-meta-button" (click)="openModal()">
+      <i nz-icon nzType="plus-circle" nzTheme="outline"></i>
+      Agregar Meta
+    </button>
+  </div>
+  <div class="illustration-section">
+    <img src="assets/Finances.png" alt="Ilustración de Finanzas" />
+  </div>
+</div>
+
+<div class="meta-info-section">
+  <h2>Metas de ahorro</h2>
+  <div class="meta-grid">
+    <div class="meta-item">
+      <i nz-icon nzType="file-text" nzTheme="outline"></i>
+      <p><strong>Nombre de la Meta:</strong> Un título breve que describa la meta (ej., "Ahorro para vacaciones").</p>
+    </div>
+    <div class="meta-item">
+      <i nz-icon nzType="dollar" nzTheme="outline"></i>
+      <p><strong>Monto Objetivo:</strong> La cantidad específica que se desea alcanzar con esta meta de ahorro.</p>
+    </div>
+    <div class="meta-item">
+      <i nz-icon nzType="calendar" nzTheme="outline"></i>
+      <p><strong>Periodicidad del Ahorro:</strong> La frecuencia de ahorro, como diaria, semanal o mensual, para que el sistema pueda estimar el tiempo restante.</p>
+    </div>
+    <div class="meta-item center-item">
+      <i nz-icon nzType="bank" nzTheme="outline"></i>
+      <p><strong>Monto Inicial (Opcional):</strong> La cantidad que ya se ha ahorrado.</p>
+    </div>
+  </div>
+</div>
+
+<div class="mis-metas-section">
+  <h2>Mis metas</h2>
+  <div class="cards-container">
+    <app-card-progreso></app-card-progreso>
+    <app-card-progreso></app-card-progreso>
+    <!-- Agrega más tarjetas según lo necesites -->
+  </div>
+</div>
+
+

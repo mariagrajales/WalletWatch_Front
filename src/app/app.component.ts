@@ -2,6 +2,10 @@ import { Component } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
 import { NgIf } from '@angular/common';
+import player from 'lottie-web';
+export function playerFactory() {
+  return player;
+}
 
 @Component({
   selector: 'app-root',
@@ -10,7 +14,7 @@ import { NgIf } from '@angular/common';
   imports: [
     HeaderComponent,
     RouterOutlet,
-    NgIf
+    NgIf,
   ],
   styleUrls: ['./app.component.css']
 })

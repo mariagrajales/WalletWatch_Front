@@ -1,0 +1,23 @@
+.not-found-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 90vh;
+  text-align: center;
+  color: #333;
+}
+
+h2 {
+  margin-top: 20px;
+  font-size: 1.5em;
+}
+
+a {
+  color: #7767DF;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}

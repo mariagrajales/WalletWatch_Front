@@ -1,0 +1,140 @@
+.card-progreso {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  position: relative;
+  max-width: 600px;
+  overflow: visible; /* Permite que los elementos sobresalgan de los bordes de la tarjeta */
+  z-index: 1;
+  background-color: #EFEBF5; /* Color gris morado tenue */
+
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 70%;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.card-content h3 {
+  font-size: 1.2em;
+  color: #2b1d6f;
+}
+
+.card-content h3 span {
+  color: #7767df;
+}
+
+.info-row {
+  display: flex;
+  gap: 20px;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 1em;
+  color: #2b1d6f;
+}
+
+.info-item i {
+  color: #7767df;
+}
+
+.progress-area {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+
+}
+
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  right: -60px;
+  gap: 10px;
+  z-index: -1;
+}
+
+.action-button {
+  background-color: #ffffff;
+  border: none;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+}
+
+.action-button i {
+  font-size: 1.5em;
+}
+
+
+.delete-button {
+  background-color: #ff4d4f;
+  color: #ffffff;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.delete-button:hover {
+  background-color: #d9363e;
+}
+
+.edit-button {
+  background-color: #CE7EE2;
+  color: #ffffff;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 1.5em;
+}
+
+.edit-button:hover {
+  background-color: #b065c5;
+}
+
+.meta-info {
+  display: flex;
+  gap: 30px; /* Aumenta el espacio entre elementos */
+  align-items: center;
+  font-size: 1.2em; /* Aumenta el tamaño del texto */
+}
+
+.meta-info-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  font-size: 1em;
+  color: #2b1d6f;
+}
+
+.meta-info-item i {
+  font-size: 1.5em;
+  color: #7767df;
+}

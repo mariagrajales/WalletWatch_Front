@@ -16,6 +16,20 @@
   gap: 15px;
 }
 
+/* Estilos para el botón "Iniciar sesión" */
+.auth-buttons button[nzType="default"] {
+  border-radius: 14px !important;
+  color: #7e7e7e !important; /* Color gris inicial */
+  border: 2px solid #ccc !important; /* Borde gris inicial */
+  background-color: transparent !important; /* Fondo transparente */
+}
+
+.auth-buttons button[nzType="default"]:hover {
+  color: #7767DF !important; /* Cambiar el texto a morado en hover */
+  border: 2px solid #7767DF !important; /* Cambiar el borde a morado en hover */
+}
+
+/* Estilos para el botón "Registrarse" */
 .register-button {
   background-color: #7767DF !important;
   color: #ffffff !important;
