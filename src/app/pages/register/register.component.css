@@ -6,6 +6,7 @@
   background: #7767DF;
   position: relative;
   overflow: hidden;
+  padding: 20px; /* Espaciado para evitar que los elementos estén pegados a los bordes */
 }
 
 .register-container::before {
@@ -32,58 +33,88 @@
   transform: translate(50%, 50%) rotate(35deg);
 }
 
-
 .register-box {
   background-color: #ffffff;
   padding: 40px;
   border-radius: 14px;
   width: 100%;
-  max-width: 700px;
+  max-width: 750px; /* Ajustamos el ancho máximo */
   text-align: center;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   z-index: 1;
+  position: relative; /* Para contener el icono y el contenido */
 }
 
 .register-box h2 {
-  font-size: 24px;
-  margin-bottom: 10px;
+  font-size: 28px;
+  margin-bottom: 20px; /* Aumentamos la separación con el texto inferior */
   color: #2B1D6F;
 }
 
 .register-box p {
   color: #666;
-  margin-bottom: 20px;
+  margin-top: 10px; /* Separación superior */
+  margin-bottom: 30px; /* Aumentamos la separación con los inputs */
 }
 
 .register-box form {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 25px; /* Mayor separación entre los bloques de inputs */
 }
 
 .form-row {
   display: flex;
-  gap: 15px;
+  gap: 20px; /* Espaciado entre elementos en la misma fila */
 }
 
-.form-row input {
+.form-row input,
+.form-row select {
   flex: 1;
   padding: 12px;
   font-size: 16px;
-  border: 2px solid #ccc; /* Borde gris tenue de 2px */
+  border: 2px solid #ccc; /* Borde gris tenue */
   border-radius: 8px;
   outline: none;
+  margin-bottom: 10px; /* Espaciado inferior adicional */
 }
 
-.register-box button {
-  background-color: #7767DF;
-  color: #fff;
-  padding: 12px;
+.register-button {
+  position: relative;
+  display: inline-block;
+  padding: 12px 30px;
   font-size: 16px;
+  color: #fff;
+  background-color: #7767DF;
   border: none;
   border-radius: 14px;
   cursor: pointer;
-  margin-top: 10px;
+  overflow: hidden;
+  z-index: 1;
+  transition: color 0.4s ease;
+  margin-top: 20px;
+}
+
+.register-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background-color: #6656CE;
+  z-index: -1;
+  transition: transform 0.4s ease;
+  transform: skewX(-30deg) scaleX(0);
+}
+
+.register-button:hover::before {
+  transform: skewX(-30deg) scaleX(1);
+  transform-origin: left;
+}
+
+.register-button:hover {
+  color: #fff;
 }
 
 .register-box a {
@@ -93,4 +124,34 @@
 
 .register-box a:hover {
   text-decoration: underline;
+}
+
+.modal-button {
+  background-color: #7767DF;
+  color: #fff;
+  padding: 12px;
+  font-size: 16px;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.modal-button:hover {
+  background-color: #6656CE;
+}
+
+.back-icon {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  cursor: pointer;
+  color: #7767DF;
+  font-size: 24px;
+  transition: color 0.3s ease;
+}
+
+.back-icon:hover {
+  color: #6656CE;
 }

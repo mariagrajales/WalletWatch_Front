@@ -1,0 +1,66 @@
+<div class="dashboard-header">
+  <div class="header-content">
+    <div class="header-text">
+      <h1>Mantén tus gastos bajo control y <span class="highlight">tus metas en la mira.</span></h1>
+    </div>
+    <div class="header-image">
+      <img
+        src="assets/Searching-Looking.png"
+        alt="Ilustración de gastos bajo control"
+      />
+    </div>
+  </div>
+</div>
+
+<div class="categorias-container">
+  <h2>Categorías de Gasto</h2>
+  <div class="accordion">
+    <div class="accordion-item" *ngFor="let categoria of categorias">
+      <div class="accordion-header" (click)="toggleCategoria(categoria)">
+        <span>{{ categoria.nombre }}</span>
+        <i
+          [class]="categoria.expandido ? 'icon-chevron-up' : 'icon-chevron-down'"
+        ></i>
+      </div>
+      <div *ngIf="categoria.expandido" class="accordion-body">
+        <div class="categoria-content">
+          <!-- Datos del gasto -->
+          <div class="gasto-info">
+            <div class="gasto-datos">
+              <div class="gasto-dato">
+                <span>Periodo:</span> {{ categoria.periodo }}
+              </div>
+              <div class="gasto-dato">
+                <span>Gastado:</span> ${{ categoria.gastoActual }}
+              </div>
+              <div class="gasto-dato">
+                <span>Límite:</span> ${{ categoria.gastoTotal }}
+              </div>
+            </div>
+            <div class="acciones">
+              <button class="registrar-btn">Registrar Gasto</button>
+              <nz-tag
+                [nzColor]="getTagColor(categoria.gastoActual, categoria.gastoTotal)"
+                *ngIf="categoria.gastoActual >= 0"
+                [ngClass]="'custom-tag'"
+              >
+                {{ getTagMessage(categoria.gastoActual, categoria.gastoTotal) }}
+              </nz-tag>
+
+            </div>
+          </div>
+          <!-- Gráfica -->
+          <div class="gasto-grafica">
+            <app-grafica-gasto
+              [gastoTotal]="categoria.gastoTotal"
+              [gastoActual]="categoria.gastoActual"
+            ></app-grafica-gasto>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+

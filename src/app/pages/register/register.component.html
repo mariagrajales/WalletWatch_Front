@@ -4,29 +4,160 @@
     <p>Empieza a gestionar y optimizar tus ahorros sin costo alguno.</p>
 
     <form (ngSubmit)="onSubmit()">
-      <div class="form-row">
-        <input type="text" placeholder="Nombre" [(ngModel)]="user.nombre" name="nombre" required />
-        <input type="email" placeholder="Email Address" [(ngModel)]="user.email" name="email" required />
+      <!-- Sección 1: Datos personales -->
+      <div *ngIf="currentStep === 1">
+        <div class="form-row">
+          <input
+            type="text"
+            placeholder="Nombre"
+            [(ngModel)]="user.nombre"
+            name="nombre"
+            required
+          />
+          <input
+            type="email"
+            placeholder="Email Address"
+            [(ngModel)]="user.email"
+            name="email"
+            required
+          />
+        </div>
+
+        <div class="form-row">
+          <input
+            type="text"
+            placeholder="Apellido P"
+            [(ngModel)]="user.apellidoP"
+            name="apellidoP"
+            required
+          />
+          <input
+            type="tel"
+            placeholder="Teléfono"
+            [(ngModel)]="user.telefono"
+            name="telefono"
+            required
+          />
+        </div>
+
+        <div class="form-row">
+          <input
+            type="text"
+            placeholder="Apellido M"
+            [(ngModel)]="user.apellidoM"
+            name="apellidoM"
+            required
+          />
+          <input
+            type="text"
+            placeholder="Nombre de usuario"
+            [(ngModel)]="user.username"
+            name="username"
+            required
+          />
+        </div>
+
+        <div class="form-row">
+          <input
+            type="password"
+            placeholder="Contraseña"
+            [(ngModel)]="user.password"
+            name="password"
+            required
+          />
+          <input
+            type="password"
+            placeholder="Confirmar contraseña"
+            [(ngModel)]="user.confirmPassword"
+            name="confirmPassword"
+            required
+          />
+        </div>
+
+        <button
+          class="modal-button"
+          type="button"
+          (click)="nextStep()"
+        >
+          Siguiente
+        </button>
       </div>
 
-      <div class="form-row">
-        <input type="text" placeholder="Apellido P" [(ngModel)]="user.apellidoP" name="apellidoP" required />
-        <input type="tel" placeholder="Teléfono" [(ngModel)]="user.telefono" name="telefono" required />
-      </div>
+      <!-- Sección 2: Datos adicionales -->
+      <div *ngIf="currentStep === 2">
+        <!-- Ícono para regresar -->
+        <div class="back-icon" (click)="prevStep()">
+          <span nz-icon nzType="rollback" nzTheme="outline"></span>
+        </div>
 
-      <div class="form-row">
-        <input type="text" placeholder="Apellido M" [(ngModel)]="user.apellidoM" name="apellidoM" required />
-        <input type="password" placeholder="Contraseña" [(ngModel)]="user.password" name="password" required />
-      </div>
+        <div class="form-row">
+          <input
+            type="text"
+            value="México"
+            disabled
+          />
+          <select [(ngModel)]="user.estado" name="estado" required>
+            <option [ngValue]="null" disabled selected>Selecciona tu estado</option>
+            <option *ngFor="let estado of estados" [ngValue]="estado.id">
+              {{ estado.nombre }}
+            </option>
+          </select>
+        </div>
 
-      <div class="form-row">
-        <input type="text" placeholder="Nombre de usuario" [(ngModel)]="user.username" name="username" required />
-        <input type="password" placeholder="Confirmar Contraseña" [(ngModel)]="user.confirmPassword" name="confirmPassword" required />
-      </div>
+        <div class="form-row">
+          <input
+            type="text"
+            placeholder="Dirección"
+            [(ngModel)]="user.direccion"
+            name="direccion"
+            required
+          />
+        </div>
 
-      <app-special-button label="Crear Cuenta" (action)="onRegister()"></app-special-button>
+        <div class="form-row">
+          <input
+            type="number"
+            placeholder="Salario mensual (MXN)"
+            [(ngModel)]="user.salarioMXN"
+            name="salarioMXN"
+            required
+          />
+          <input
+            type="number"
+            placeholder="Salario mensual (USD)"
+            [(ngModel)]="user.salarioUSD"
+            name="salarioUSD"
+            required
+          />
+        </div>
+
+        <div class="form-row">
+          <input
+            type="number"
+            placeholder="Límite de gastos (mensual)"
+            [(ngModel)]="user.limiteGastos"
+            name="limiteGastos"
+            required
+          />
+          <input
+            type="number"
+            placeholder="Balance objetivo (mensual)"
+            [(ngModel)]="user.balanceObjetivo"
+            name="balanceObjetivo"
+            required
+          />
+        </div>
+
+        <app-special-button
+          label="Registrar"
+          (action)="onSubmit()">
+        </app-special-button>
+
+      </div>
     </form>
 
-    <p>¿Ya tienes una cuenta? <a routerLink="/login">Inicia sesión</a></p>
+    <p>
+      ¿Ya tienes una cuenta? <a routerLink="/login">Inicia sesión</a>
+    </p>
   </div>
 </div>

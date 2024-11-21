@@ -6,6 +6,9 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { provideHttpClient } from '@angular/common/http';
 import { NZ_ICONS } from 'ng-zorro-antd/icon';
 import {icons} from "./icons-provider";
+import {es_ES, NZ_I18N} from "ng-zorro-antd/i18n";
+import {NzModalService} from "ng-zorro-antd/modal";
+
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -13,6 +16,8 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideAnimationsAsync(),
     provideHttpClient(),
-    { provide: NZ_ICONS, useValue: icons }
+    { provide: NZ_ICONS, useValue: icons },
+    { provide: NZ_I18N, useValue: es_ES },
+    NzModalService,
   ]
 };

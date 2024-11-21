@@ -87,7 +87,7 @@
   justify-content: center;
   padding: 10px;
   max-width: 300px;
-  text-align: center; /* Mantener alineación del texto */
+  text-align: center;
 }
 
 .meta-item i {
@@ -103,7 +103,7 @@
 }
 
 .meta-item p strong {
-  color: #4e36b1; /* Morado más intenso para los títulos */
+  color: #4e36b1;
 }
 
 .center-item {

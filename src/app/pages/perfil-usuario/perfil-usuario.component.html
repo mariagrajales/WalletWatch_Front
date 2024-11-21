@@ -1,0 +1,83 @@
+<div class="profile-header">
+  <div class="avatar-container">
+    <nz-avatar nzIcon="user"></nz-avatar>
+  </div>
+  <div class="profile-info">
+    <h2>{{ fullName }}</h2>
+    <p>{{ email }}</p>
+  </div>
+</div>
+
+<div class="profile-details">
+  <div class="profile-section">
+    <h3>Información Personal</h3>
+    <div class="profile-grid">
+      <div class="profile-item">
+        <label>Nombre:</label>
+        <p>{{ nombre }}</p>
+      </div>
+      <div class="profile-item">
+        <label>Apellido Paterno:</label>
+        <p>{{ apellidoP }}</p>
+      </div>
+      <div class="profile-item">
+        <label>Apellido Materno:</label>
+        <p>{{ apellidoM }}</p>
+      </div>
+      <div class="profile-item">
+        <label>Correo Electrónico:</label>
+        <p>{{ email }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="profile-section">
+    <h3>Detalles de Cuenta</h3>
+    <div class="profile-grid">
+      <div class="profile-item">
+        <label>Teléfono:</label>
+        <p>{{ telefono }}</p>
+      </div>
+      <div class="profile-item">
+        <label>Nombre de Usuario:</label>
+        <p>{{ username }}</p>
+      </div>
+      <div class="profile-item">
+        <label>Fecha de Registro:</label>
+        <p>{{ fechaRegistro }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="profile-section">
+    <h3>Detalles de Ubicación</h3>
+    <div class="profile-grid">
+      <div class="profile-item">
+        <label>País:</label>
+        <p>{{ pais }}</p>
+      </div>
+      <div class="profile-item">
+        <label>Estado:</label>
+        <p>{{ estado }}</p>
+      </div>
+      <div class="profile-item">
+        <label>Dirección:</label>
+        <p>{{ direccion }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="profile-section">
+    <h3>Salarios</h3>
+    <div class="profile-grid">
+      <div class="profile-item">
+        <label>Salario (MXN):</label>
+        <p>${{ salarioMXN }}</p>
+      </div>
+      <div class="profile-item">
+        <label>Salario (USD):</label>
+        <p>${{ salarioUSD }}</p>
+      </div>
+    </div>
+  </div>
+</div>

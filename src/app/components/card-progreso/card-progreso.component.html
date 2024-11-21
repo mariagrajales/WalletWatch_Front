@@ -5,30 +5,41 @@
     <div class="meta-info">
       <div class="meta-info-item">
         <i nz-icon nzType="calendar" nzTheme="outline"></i>
-        <span>Semanal</span>
+        <span>Finalización: {{ fecha_objetivo }}</span>
       </div>
       <div class="meta-info-item">
         <i nz-icon nzType="dollar" nzTheme="outline"></i>
-        <span>5,000</span>
+        <span>Objetivo: ${{ monto_objetivo }}</span>
       </div>
       <div class="meta-info-item">
         <i nz-icon nzType="bank" nzTheme="outline"></i>
-        <span>500</span>
+        <span>Actual: ${{ monto_actual }}</span>
       </div>
     </div>
+    <button class="abonar-button" (click)="openModalAbono()">Abonar</button>
   </div>
 
   <!-- Lado Derecho: Gráfica de progreso y botones -->
   <div class="progress-area">
-    <app-grafica-progreso></app-grafica-progreso>
+    <app-grafica-progreso
+      [monto_objetivo]="monto_objetivo"
+      [monto_actual]="monto_actual">
+    </app-grafica-progreso>
     <div class="action-buttons">
-      <button class="action-button delete-button" title="Eliminar">
+      <button
+        nz-popconfirm
+        [nzPopconfirmTitle]="'¿Estás seguro de que deseas eliminar esta meta?'"
+        (nzOnConfirm)="onDeleteConfirm()"
+        nzPopconfirmPlacement="right"
+        class="action-button delete-button"
+        title="Eliminar">
         <i nz-icon nzType="delete" nzTheme="outline"></i>
       </button>
-      <div class="edit-button">
+      <button
+        class="action-button edit-button"
+        (click)="openEditMetaModal()">
         <i nz-icon nzType="edit" nzTheme="outline"></i>
-      </div>
-
+      </button>
     </div>
   </div>
 </div>

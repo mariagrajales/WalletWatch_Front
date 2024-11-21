@@ -1,0 +1,40 @@
+<div class="custom-modal-backdrop">
+  <div class="custom-modal">
+    <!-- Cabecera del modal -->
+    <div class="modal-header">
+      <h2>Realizar Abono</h2>
+      <button class="close-button" (click)="closeDialog()">×</button>
+    </div>
+
+    <!-- Subtítulo para abonos recientes -->
+    <p class="recent-title">Abonos Recientes</p>
+
+    <!-- Cuerpo del modal -->
+    <div class="modal-body">
+      <!-- Lista de abonos recientes -->
+      <ul class="recent-abonos">
+        <li *ngFor="let abono of abonosRecientes">
+          {{ abono.fecha }}: <strong>${{ abono.monto }}</strong>
+        </li>
+      </ul>
+
+      <!-- Formulario para nuevo abono -->
+      <form [formGroup]="form" (ngSubmit)="realizarAbono()">
+        <div class="new-abono">
+          <input
+            type="number"
+            placeholder="Ingrese el monto"
+            formControlName="monto"
+          />
+        </div>
+        <button
+          class="add-button"
+          type="submit"
+          [disabled]="form.invalid"
+        >
+          Realizar Abono
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,169 @@
+.dashboard-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #f5f7fa;
+  border-bottom: 2px solid #dcdcdc;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  text-align: center;
+  padding: 40px;
+}
+
+.header-text {
+  padding: 40px;
+  flex: 1;
+  max-width: 1000px;
+}
+
+.header-text{
+  font-size: 1.6em;
+  color: #2b1d6f;
+  margin-bottom: 20px;
+}
+
+.highlight {
+  color: #7767df;
+
+}
+
+.header-text .highlight {
+  color: #7767df;
+}
+
+.header-text .black-text {
+  color: #000000; /* Cambiar color de la 'y' a negro */
+}
+
+.header-image {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end; /* Mover imagen más a la derecha */
+}
+
+.header-image img {
+  width: 30vw;
+  height: auto;
+}
+
+
+
+.categorias-container {
+  padding: 80px ;
+  margin: 20px;
+}
+
+.accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.accordion-item {
+  border: 1px solid #dcdcdc;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.accordion-header {
+  padding: 15px;
+  background-color: #f5f7fa;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.accordion-header span {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #7767df;
+}
+
+.accordion-header i {
+  font-size: 1.2em;
+  color: #7767df;
+}
+
+.accordion-body {
+  padding: 20px;
+  background-color: #ffffff;
+}
+
+.categoria-content {
+  padding: 40px;
+  display: flex;
+  align-items: center; /* Alinea verticalmente los elementos */
+  justify-content: space-between; /* Distribuye el espacio entre los bloques */
+  gap: 20px; /* Espaciado entre los elementos */
+  background-color: #f5f7fa;
+}
+
+.gasto-info {
+  flex: 2; /* La información ocupa más espacio */
+  display: flex;
+  flex-direction: column;
+}
+.gasto-datos {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.4em;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.gasto-dato span {
+  font-weight: bold;
+  color: #7767df;
+  margin-right: 5px;
+}
+
+.registrar-btn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #7767df;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.2em;
+  text-align: center;
+  align-self: flex-start;
+}
+
+.registrar-btn:hover {
+  background-color: #574bc3;
+}
+
+.gasto-grafica {
+  flex: 1; /* La gráfica ocupa menos espacio */
+  display: flex;
+  justify-content: center;
+}
+
+
+.acciones {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Espaciado entre el botón y la etiqueta */
+  margin-top: 20px;
+}
+
+.custom-tag {
+  margin: 20px 20px 20px 60px ;
+  font-size: 1.4em !important; /* Tamaño de las letras */
+  padding: 15px; /* Añade espacio interno para agrandar el recuadro */
+  min-width: 250px; /* Ancho mínimo para el tag */
+  text-align: center; /* Centra el texto horizontalmente */
+  display: flex; /* Asegura que el contenido se alinee correctamente */
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+}
+

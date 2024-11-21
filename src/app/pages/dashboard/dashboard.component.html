@@ -36,10 +36,16 @@
 <div class="mis-metas-section">
   <h2>Mis metas</h2>
   <div class="cards-container">
-    <app-card-progreso></app-card-progreso>
-    <app-card-progreso></app-card-progreso>
-    <!-- Agrega más tarjetas según lo necesites -->
+    <app-card-progreso
+      *ngFor="let meta of metas"
+      [ahorroMeta]="meta.nombre"
+      [monto_objetivo]="meta.monto_objetivo"
+      [monto_actual]="meta.monto_actual"
+      [fecha_inicio]="meta.fecha_inicio"
+      [fecha_objetivo]="meta.fecha_objetivo">
+    </app-card-progreso>
   </div>
 </div>
+
 
 

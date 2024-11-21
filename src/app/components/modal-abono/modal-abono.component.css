@@ -1,0 +1,99 @@
+.custom-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.custom-modal {
+  background-color: #ffffff;
+  width: 400px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+.modal-header {
+  background-color: #7767df;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+
+.modal-header h2 {
+  margin: 0;
+  font-size: 1.5em;
+  color: #ffffffff;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.recent-title {
+  margin: 15px 0;
+  font-size: 1.3em;
+  color: #6F5B88;
+  text-align: center;
+  font-weight: bold;
+}
+
+.modal-body {
+  padding: 20px;
+  text-align: center; /* Centra todo el contenido de la modal */
+}
+
+.recent-abonos {
+  list-style: none;
+  padding: 0 20px 20px 20px;
+}
+
+.recent-abonos li {
+  margin: 5px 0;
+  font-size: 1.2em;
+  color: #888888; /* Gris tenue */
+
+}
+
+.new-abono {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.new-abono input {
+  width: 100%; /* Ocupa todo el ancho disponible */
+  padding: 10px;
+  border: 1px solid #7767df;
+  border-radius: 5px;
+}
+
+.add-button {
+  background-color: #7767df;
+  color: #ffffff;
+  border: none;
+  width: 100%; /* Botón más largo */
+  padding: 10px 0;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 10px;
+  border: 2px solid #ffffff; /* Bordes blancos */
+}
+
+.add-button:hover {
+  background-color: #6656ce;
+}

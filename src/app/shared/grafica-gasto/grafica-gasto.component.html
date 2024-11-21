@@ -1,0 +1,22 @@
+<div class="grafica-contenedor">
+  <nz-progress
+    [nzType]="'circle'"
+    [nzPercent]="porcentaje"
+    [nzWidth]="150"
+    [nzStrokeColor]="strokeColor"
+    [nzFormat]="formatoPorcentaje"
+  ></nz-progress>
+  <ng-container *ngIf="icono">
+    <i
+      nz-icon
+      [nzType]="icono"
+      [ngClass]="{
+        'icono-advertencia': porcentaje < 100,
+        'icono-error': porcentaje >= 100
+      }"
+    ></i>
+  </ng-container>
+  <p *ngIf="!icono" class="porcentaje-texto">
+    {{ porcentaje.toFixed(1) }}%
+  </p>
+</div>
