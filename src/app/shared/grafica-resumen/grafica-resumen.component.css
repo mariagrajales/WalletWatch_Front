@@ -1,0 +1,39 @@
+.grafica-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.grafica-ring {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: conic-gradient(#5687F2 0% 81%, #EAB308 81% 100%);
+}
+
+.gasto-text {
+  font-size: 24px;
+  color: #000;
+}
+
+.legend {
+  display: flex;
+  gap: 10px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+
+.color-box {
+  width: 15px;
+  height: 15px;
+  margin-right: 5px;
+}

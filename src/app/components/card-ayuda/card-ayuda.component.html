@@ -4,9 +4,8 @@
   <div class="wave"></div>
 
   <div class="infotop">
-    <svg [attr.fill]="iconColor" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="icon">
-      <path [attr.d]="iconPath"></path>
-    </svg>
+    <!-- Usar img para cargar el icono SVG desde la carpeta assets -->
+    <img [src]="iconPath" alt="{{ title }}" class="icon" style="color: #ffff" />
     <br />
     <div class="title">{{ title }}</div>
     <div class="description">{{ description }}</div>

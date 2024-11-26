@@ -17,14 +17,16 @@
 }
 
 .title h1 {
-  font-size: 2.5em;
+  font-size: 3.5em;
   margin: 0;
   font-weight: bold;
   color: #ffffff;
+  text-align: center;
 }
 
 .description p {
-  font-size: 1.2em;
+  text-align: center;
+  font-size: 1.4em;
   margin-top: 15px;
   line-height: 1.5;
   color: #dcdcdc;
@@ -53,7 +55,7 @@
 }
 
 .services-section h2 {
-  font-size: 1.8em;
+  font-size: 2.4em;
   margin-bottom: 20px;
   color: #2B1D6F; /* Color del texto del título */
 }
@@ -64,7 +66,7 @@
   justify-content: center;
   gap: 150px; /* Reduce el espacio entre las tarjetas */
   flex-wrap: wrap;
-  padding: 50px 20px; /* Ajusta el espacio a los lados */
+  padding: 20px 20px; /* Ajusta el espacio a los lados */
 }
 
 
@@ -187,3 +189,157 @@
     transform: rotate(360deg);
   }
 }
+
+.testimonials-section {
+  padding: 80px 40px;
+  text-align: center;
+  background-color: #f5f7fa;  /* Fondo claro para la sección */
+}
+
+.testimonials-section h2 {
+  font-size: 2.5em;
+  color: #2b1d6f; /* Color morado */
+  margin-bottom: 40px;
+}
+
+.testimonials-cards {
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.testimonial-card {
+  background-color: #fff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  width: 30%;
+  min-width: 250px;
+  text-align: center;
+  transition: transform 0.3s ease-in-out; /* Efecto de animación */
+}
+
+.testimonial-card:hover {
+  transform: scale(1.05); /* Aumenta ligeramente el tamaño del card al pasar el ratón */
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.15); /* Sombra más pronunciada */
+}
+
+.testimonial-card p {
+  font-size: 1.1em;
+  color: #555;
+  font-style: italic;
+  margin-bottom: 20px;
+}
+
+.testimonial-card h4 {
+  font-size: 1.3em;
+  color: #2b1d6f; /* Color morado */
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.testimonial-card:before {
+  content: "“";
+  font-size: 3em;
+  color: #7767df;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+.testimonial-card:after {
+  content: "”";
+  font-size: 3em;
+  color: #7767df; /* Color morado claro */
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+
+.features-section {
+  padding: 60px 20px;
+  background-color: #fff; /* Fondo blanco para la sección */
+  text-align: center;
+  color: #2b1d6f; /* Título en color morado */
+  width: 100%;
+}
+
+.features-section h2 {
+  font-size: 2.5em;
+  color: #2b1d6f; /* Morado oscuro */
+  margin-bottom: 40px;
+}
+
+.features-grid {
+  padding: 40px 40px;
+  grid-template-columns: 1fr 1fr;
+  display: grid;
+  gap: 30px;
+  justify-content: center;
+  align-items: center;
+  grid-auto-rows: minmax(200px, auto); /* Hace que las filas sean de alto dinámico */
+}
+
+.feature-item {
+  background-color: #f5f7fa; /* Fondo de los ítems en gris claro */
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Efecto interactivo */
+  position: relative;
+  overflow: hidden;
+  height: 100%; /* Asegura que las tarjetas ocupen el alto completo */
+}
+
+.feature-item:hover {
+  transform: translateY(-10px); /* Desplazamiento en Y al pasar el ratón */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2); /* Sombra más profunda */
+}
+
+.feature-item h3 {
+  color: #2b1d6f; /* Título morado */
+  font-size: 1.6em;
+  margin-bottom: 20px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.feature-item p {
+  color: #777;
+  font-size: 1.1em;
+  line-height: 1.5;
+  margin-top: 15px;
+}
+
+.feature-item:before {
+  content: "";
+  display: block;
+  width: 50px;
+  height: 4px;
+  background-color: #7767df; /* Barra morada arriba de cada característica */
+  margin: 0 auto 20px auto;
+}
+
+/* Agregar el efecto de parallax (desplazamiento de fondo en el hover) */
+.feature-item:hover::before {
+  transform: scaleX(1.5);
+  transition: all 0.5s ease;
+}
+
+/* Opcional: para un diseño de "filtro de movimiento" para las tarjetas */
+.features-grid {
+  perspective: 1000px;
+}
+
+.feature-item {
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease;
+}
+
+.feature-item:hover {
+  transform: rotateY(10deg);
+}
+
+

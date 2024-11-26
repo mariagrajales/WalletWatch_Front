@@ -15,29 +15,13 @@
             required
           />
           <input
-            type="email"
-            placeholder="Email Address"
-            [(ngModel)]="user.email"
-            name="email"
-            required
-          />
-        </div>
-
-        <div class="form-row">
-          <input
             type="text"
             placeholder="Apellido P"
             [(ngModel)]="user.apellidoP"
             name="apellidoP"
             required
           />
-          <input
-            type="tel"
-            placeholder="Teléfono"
-            [(ngModel)]="user.telefono"
-            name="telefono"
-            required
-          />
+
         </div>
 
         <div class="form-row">
@@ -49,13 +33,30 @@
             required
           />
           <input
+            type="email"
+            placeholder="Email Address"
+            [(ngModel)]="user.email"
+            name="email"
+            required
+          />
+        </div>
+
+        <!--<div class="form-row">
+          <input
+            type="tel"
+            placeholder="Teléfono"
+            [(ngModel)]="user.telefono"
+            name="telefono"
+            required
+          />
+          <input
             type="text"
             placeholder="Nombre de usuario"
             [(ngModel)]="user.username"
             name="username"
             required
           />
-        </div>
+        </div>-->
 
         <div class="form-row">
           <input
@@ -114,21 +115,19 @@
           />
         </div>
 
+        <!-- Ahora solo un campo salario -->
         <div class="form-row">
           <input
             type="number"
-            placeholder="Salario mensual (MXN)"
-            [(ngModel)]="user.salarioMXN"
-            name="salarioMXN"
+            placeholder="Salario mensual"
+            [(ngModel)]="user.salario"
+            name="salario"
             required
           />
-          <input
-            type="number"
-            placeholder="Salario mensual (USD)"
-            [(ngModel)]="user.salarioUSD"
-            name="salarioUSD"
-            required
-          />
+          <select [(ngModel)]="user.divisa" name="divisa" required>
+            <option value="MXN">MXN</option>
+            <option value="USD">USD</option>
+          </select>
         </div>
 
         <div class="form-row">
@@ -147,9 +146,9 @@
             required
           />
         </div>
-
         <app-special-button
           label="Registrar"
+          [disabled]="isSubmitting"
           (action)="onSubmit()">
         </app-special-button>
 

@@ -1,0 +1,97 @@
+/* footer.component.css */
+.footer {
+  background: linear-gradient(135deg, #7767df, #6a55c9); /* Fondo con un gradiente suave */
+  color: #fff; /* Texto en blanco */
+  padding: 40px 20px;
+  text-align: center;
+  border-radius: 0 0 20px 20px; /* Bordes redondeados en la parte inferior */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1); /* Sombra para dar profundidad */
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  transition: transform 0.3s ease; /* Transición de la sección del footer */
+}
+
+.footer-logo {
+  flex: 1;
+  transition: transform 0.3s ease;
+}
+
+.footer-logo h3 {
+  font-size: 2.5em;
+  margin: 0;
+  color: #fff; /* Blanco para el título */
+}
+
+.footer-logo p {
+  font-size: 1.2em;
+  color: #dcdcdc; /* Gris claro para la descripción */
+}
+
+.footer-links {
+  flex: 2;
+  text-align: left;
+}
+
+.footer-links ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.footer-links ul li {
+  margin: 10px 0;
+}
+
+.footer-links ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.1em;
+  font-weight: bold;
+  transition: color 0.3s, transform 0.3s ease; /* Transición para color y tamaño */
+}
+
+.footer-links ul li a:hover {
+  color: #f4f4f4; /* Gris muy claro en hover */
+  transform: scale(1.1); /* Agrandar el texto al hacer hover */
+}
+
+.footer-social {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.footer-social a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 1.5em;
+  margin: 0 15px;
+  transition: color 0.3s, transform 0.3s ease; /* Transición para color y tamaño */
+}
+
+.footer-social a:hover {
+  color: #f4f4f4; /* Gris claro en hover */
+  transform: scale(1.2); /* Agrandar los iconos al hacer hover */
+}
+
+.footer-bottom {
+  margin-top: 30px;
+  background-color: #6a55c9; /* Fondo morado más suave para la parte inferior */
+  padding: 10px;
+  font-size: 1em;
+}
+
+.footer-bottom p {
+  margin: 0;
+  color: #fff;
+}
+
+/* Añadir animación a las secciones del footer cuando se pasa el mouse */
+.footer-container:hover {
+  transform: translateY(-5px); /* Efecto de elevación en todo el contenedor */
+}

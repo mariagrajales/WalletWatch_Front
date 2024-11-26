@@ -1,17 +1,16 @@
 <app-landing-header></app-landing-header>
-
-
 <div class="landing-container">
   <div class="left-section">
     <div class="title">
       <h1>Empieza a tomar el control de tus finanzas</h1>
     </div>
     <div class="description">
-      <p>Herramienta diseñada para ayudarte a ahorrar, organizar tus gastos y alcanzar tus metas financieras de manera sencilla y personalizada.</p>
+      <p>Herramienta diseñada para ayudarte a ahorrar, organizar tus gastos y alcanzar tus metas financieras de manera
+        sencilla y personalizada.</p>
     </div>
   </div>
   <div class="right-section">
-    <img src="assets/Business_Plan.png" alt="Imagen ilustrativa" height="603" width="578" priority />
+    <img src="assets/Business_Plan.png" alt="Imagen ilustrativa" height="603" width="578" priority/>
   </div>
 </div>
 <!-- Nueva Sección -->
@@ -19,22 +18,63 @@
   <h2>¿Cómo podemos ayudarte?</h2>
   <div class="service-cards">
     <app-card-ayuda
-      iconPath="M19.4133 4.89862L14.5863 2.17544C12.9911 1.27485 11.0089 1.27485 9.41368 2.17544L4.58674 4.89862C2.99153 5.7992 2 7.47596 2 9.2763V14.7235C2 16.5238 2.99153 18.2014 4.58674 19.1012L9.41368 21.8252C10.2079 22.2734 11.105 22.5 12.0046 22.5C12.6952 22.5 13.3874 22.3657 14.0349 22.0954C14.2204 22.018 14.4059 21.9273 14.5872 21.8252L19.4141 19.1012C19.9765 18.7831 20.4655 18.3728 20.8651 17.8825C21.597 16.9894 22 15.8671 22 14.7243V9.27713C22 7.47678 21.0085 5.7992 19.4133 4.89862Z"
+      [iconType]="'bank'"
       title="Ahorro de tiempo"
       description="Ahorro de tiempo al utilizarse."
     ></app-card-ayuda>
 
     <app-card-ayuda
-      iconPath="M4.10784 14.7235V9.2763C4.10784 8.20928 4.6955 7.21559 5.64066 6.68166L10.4676 3.95848C10.9398 3.69152 11.4701 3.55804 11.9996 3.55804C12.5291 3.55804 13.0594 3.69152 13.5324 3.95848L18.3593 6.68166C19.3045 7.21476 19.8922 8.20928 19.8922 9.2763V9.75997"
+      [iconType]="'appstore'"
       title="Facilidad de uso"
       description="Fácil e intuitiva de usar."
     ></app-card-ayuda>
 
     <app-card-ayuda
-      iconPath="M10.4676 20.0413L8.60933 18.9924C8.94996 17.0479 9.94402 15.2665 11.4515 13.921C13.1353 12.4181 15.3198 11.5908 17.6022 11.5908C18.3804 11.5908 19.1477 11.6864 19.8922 11.8742"
+      [iconType]="'safety'"
       title="Seguridad"
       description="Segura y accesible para cualquier persona."
     ></app-card-ayuda>
+  </div>
+</div>
+
+<div class="testimonials-section">
+  <h2>Lo que dicen nuestros usuarios</h2>
+  <div class="testimonials-cards">
+    <div class="testimonial-card">
+      <p>"Esta herramienta me ha ayudado a ahorrar más y gestionar mejor mis finanzas. ¡Es increíble!"</p>
+      <h4>- Juan Pérez</h4>
+    </div>
+    <div class="testimonial-card">
+      <p>"Fácil de usar y muy efectiva para mantenerme en control de mis gastos. ¡Totalmente recomendada!"</p>
+      <h4>- María Gómez</h4>
+    </div>
+    <div class="testimonial-card">
+      <p>"Gracias a esta app, ahora puedo planificar mejor mi futuro financiero y alcanzar mis metas."</p>
+      <h4>- Carlos López</h4>
+    </div>
+  </div>
+</div>
+
+
+<div class="features-section">
+  <h2>Características principales</h2>
+  <div class="features-grid">
+    <div class="feature-item">
+      <h3>Organización Fácil</h3>
+      <p>Permite organizar tus ingresos y gastos de manera eficiente.</p>
+    </div>
+    <div class="feature-item">
+      <h3>Metas Financieras</h3>
+      <p>Establece metas y alcanza tus objetivos financieros.</p>
+    </div>
+    <div class="feature-item">
+      <h3>Seguridad Garantizada</h3>
+      <p>Tus datos están protegidos con la mejor seguridad.</p>
+    </div>
+    <div class="feature-item">
+      <h3>Accesibilidad</h3>
+      <p>Accede a tus finanzas desde cualquier dispositivo.</p>
+    </div>
   </div>
 </div>
 

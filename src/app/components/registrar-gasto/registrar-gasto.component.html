@@ -1,0 +1,47 @@
+<div class="custom-modal-backdrop">
+  <div class="custom-modal">
+    <!-- Cabecera del modal -->
+    <div class="modal-header">
+      <h2>Registrar Gasto</h2>
+      <button class="close-button" (click)="closeDialog()">×</button>
+    </div>
+
+    <!-- Cuerpo del modal -->
+    <div class="modal-body">
+      <form [formGroup]="form" (ngSubmit)="registrarGasto()">
+        <!-- Monto -->
+        <div class="form-group">
+          <label for="monto">Monto</label>
+          <input
+            type="number"
+            id="monto"
+            formControlName="monto"
+            placeholder="Monto"
+            required
+          />
+        </div>
+
+        <!-- Descripción -->
+        <div class="form-group">
+          <label for="descripcion">Descripción</label>
+          <input
+            type="text"
+            id="descripcion"
+            formControlName="descripcion"
+            placeholder="Descripción"
+            required
+          />
+        </div>
+
+        <!-- Botón para registrar gasto -->
+        <button
+          class="registrar-btn"
+          type="submit"
+          [disabled]="form.invalid"
+        >
+          Registrar Gasto
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

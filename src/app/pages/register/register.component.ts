@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
-import {Router, RouterLink} from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
-import {FormsModule} from "@angular/forms";
-import {NzIconDirective} from "ng-zorro-antd/icon";
-import {NgForOf, NgIf} from "@angular/common";
-import {SpecialButtonComponent} from "../../shared/special-button/special-button.component"; // Cambiar el path si es necesario
+import { GeoService } from '../../services/geo.service';
+import { FormsModule } from "@angular/forms";
+import { NzIconDirective } from "ng-zorro-antd/icon";
+import { NgForOf, NgIf } from "@angular/common";
+import { SpecialButtonComponent } from "../../shared/special-button/special-button.component";
+import {NzMessageService} from "ng-zorro-antd/message";
 
 @Component({
   selector: 'app-register',
@@ -32,22 +34,42 @@ export class RegisterComponent {
     confirmPassword: '',
     estado: null,
     direccion: '',
-    salarioMXN: null,
-    salarioUSD: null,
+    salario: null,
     balanceObjetivo: null,
     limiteGastos: null,
+    divisa: 'MXN',
   };
 
-  currentStep = 1; // Control para los pasos
-  estados = [
-    { id: 1, nombre: 'Aguascalientes' },
-    { id: 2, nombre: 'Baja California' },
-    // Más estados aquí...
-  ];
+  currentStep = 1;
+  estados: any[] = [];  // Aquí se guardarán los estados obtenidos
+  isSubmitting = false;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router, private message: NzMessageService,    private geoService: GeoService,  // Inyectamos el servicio
+    ) {}
 
-  // Ir al siguiente paso
+  ngOnInit(): void {
+    console.log("ngOnInit ejecutado");  // Asegúrate de que este log se muestre en la consola
+    const token = localStorage.getItem('token') || '';
+    if (!token) {
+      this.message.create('error', 'No se encontró un token válido. Por favor, inicie sesión.');
+      return;
+    }
+
+    // Llamar al servicio para obtener los estados
+    this.geoService.getEstados(token).subscribe({
+      next: (response) => {
+        this.estados = response;  // Asignamos la respuesta a la variable de estados
+        console.log('Estados cargados:', this.estados);
+      },
+      error: (err) => {
+        console.error('Error al obtener los estados:', err);
+        this.message.create('error', 'Hubo un error al cargar los estados.');
+      }
+    });
+  }
+
+
+
   nextStep(): void {
     this.currentStep++;
   }
@@ -57,14 +79,18 @@ export class RegisterComponent {
     this.currentStep--;
   }
 
-  // Enviar el formulario
   onSubmit(): void {
-    if (this.user.password !== this.user.confirmPassword) {
-      alert('Las contraseñas no coinciden');
+    if (this.isSubmitting) {
       return;
     }
 
-    // Mapeo de los datos al formato esperado por el backend
+    if (this.user.password !== this.user.confirmPassword) {
+      this.message.create('warning','Las contraseñas no coinciden');
+      return;
+    }
+
+    this.isSubmitting = true;
+
     const registerData = {
       correo: this.user.email,
       contrasena: this.user.password,
@@ -75,22 +101,25 @@ export class RegisterComponent {
       pais_id: 1,
       estado_id: this.user.estado,
       direccion: this.user.direccion,
-      salario_mxn: this.user.salarioMXN,
-      salario_usd: this.user.salarioUSD,
+      salario: this.user.salario,
+      divisa: this.user.divisa,
       balance_objetivo: this.user.balanceObjetivo,
       gasto_limite: this.user.limiteGastos,
     };
 
-    // Llamar al servicio para registrar
+    console.log('Datos enviados al backend:', registerData);
+
     this.authService.register(registerData).subscribe({
       next: (response) => {
-        alert('Registro exitoso');
+        this.message.create('success','Registro exitoso');
         console.log(response);
-        this.router.navigate(['/login']); // Redirigir al login
+        this.isSubmitting = false;
+        this.router.navigate(['/login']);
       },
       error: (err) => {
         console.error('Error en el registro:', err);
-        alert('Error al registrar. Intenta nuevamente.');
+        this.message.create('error','Error al registrar. Intenta nuevamente.');
+        this.isSubmitting = false;
       },
     });
   }

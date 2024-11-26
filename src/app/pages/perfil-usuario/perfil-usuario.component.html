@@ -35,14 +35,6 @@
     <h3>Detalles de Cuenta</h3>
     <div class="profile-grid">
       <div class="profile-item">
-        <label>Teléfono:</label>
-        <p>{{ telefono }}</p>
-      </div>
-      <div class="profile-item">
-        <label>Nombre de Usuario:</label>
-        <p>{{ username }}</p>
-      </div>
-      <div class="profile-item">
         <label>Fecha de Registro:</label>
         <p>{{ fechaRegistro }}</p>
       </div>
@@ -56,13 +48,23 @@
         <label>País:</label>
         <p>{{ pais }}</p>
       </div>
+
+      <!-- Estado: Editable select o solo texto -->
       <div class="profile-item">
         <label>Estado:</label>
-        <p>{{ estado }}</p>
+        <ng-container *ngIf="isEditable; else estadoTexto">
+          <select [(ngModel)]="estadoId" [disabled]="!isEditable" style="background: #f5f7fa; border: none">
+            <option *ngFor="let estado of estados" [value]="estado.id">{{ estado.nombre }}</option>
+          </select>
+        </ng-container>
+        <ng-template #estadoTexto>
+          <p>{{ estado }}</p>
+        </ng-template>
       </div>
+
       <div class="profile-item">
         <label>Dirección:</label>
-        <p>{{ direccion }}</p>
+        <p [attr.contenteditable]="isEditable ? true : null">{{ direccion }}</p>
       </div>
     </div>
   </div>
@@ -72,12 +74,44 @@
     <div class="profile-grid">
       <div class="profile-item">
         <label>Salario (MXN):</label>
-        <p>${{ salarioMXN }}</p>
+        <div>
+          <span>$ </span>
+          <p [attr.contenteditable]="isEditable ? true : null">{{ salarioMXN }}</p>
+        </div>
       </div>
       <div class="profile-item">
         <label>Salario (USD):</label>
-        <p>${{ salarioUSD }}</p>
+        <div>
+          <span>$ </span>
+          <p [attr.contenteditable]="isEditable ? true : null">{{ salarioUSD }}</p>
+        </div>
       </div>
     </div>
+  </div>
+
+  <div class="button-container">
+    <button
+      *ngIf="!isEditable"
+      (click)="toggleEdit()"
+      class="btn-edit"
+    >
+      Editar perfil
+    </button>
+
+    <button
+      *ngIf="isEditable"
+      (click)="saveChanges()"
+      class="btn-save"
+    >
+      Guardar Cambios
+    </button>
+
+    <button
+      *ngIf="isEditable"
+      (click)="cancelChanges()"
+      class="btn-cancel"
+    >
+      Cancelar
+    </button>
   </div>
 </div>

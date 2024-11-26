@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { Component, EventEmitter, Inject, Output, OnInit } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { NgForOf } from '@angular/common';
+import {DatePipe, NgForOf} from '@angular/common';
+import { MetaService } from '../../services/meta.service';
+import { NzMessageService } from "ng-zorro-antd/message";
 
 @Component({
   selector: 'app-modal-abono',
@@ -16,23 +18,46 @@ import { NgForOf } from '@angular/common';
     MatInputModule,
     MatButtonModule,
     NgForOf,
+    DatePipe,
   ],
+  providers: [DatePipe]  // Agregar DatePipe en los providers
 })
-export class ModalAbonoComponent {
+export class ModalAbonoComponent implements OnInit {
+  @Output() metaUpdated = new EventEmitter<void>();
   form: FormGroup;
+  abonosRecientes: any[] = [];
 
-  abonosRecientes = [
-    { fecha: '17 de noviembre de 2024', monto: 500 },
-    { fecha: '15 de noviembre de 2024', monto: 400 },
-    { fecha: '15 de noviembre de 2024', monto: 300 },
-  ];
+  metaId: string = '';
 
   constructor(
+    private message: NzMessageService,
     public dialogRef: MatDialogRef<ModalAbonoComponent>,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private metaService: MetaService,
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private datePipe: DatePipe  // Inyectar DatePipe
   ) {
     this.form = this.fb.group({
       monto: [''],
+    });
+    this.metaId = data.id;
+  }
+
+  ngOnInit(): void {
+    const token = localStorage.getItem('token') || '';
+    if (!token) {
+      this.message.create('error', 'No se encontró un token válido. Por favor, inicie sesión.');
+      return;
+    }
+
+    this.metaService.getUltimosAbonos(this.metaId, token).subscribe({
+      next: (response) => {
+        this.abonosRecientes = response;
+      },
+      error: (err) => {
+        console.error('Error al obtener los abonos:', err);
+        this.message.create('error', 'Hubo un error al cargar los abonos.');
+      }
     });
   }
 
@@ -42,7 +67,29 @@ export class ModalAbonoComponent {
 
   realizarAbono(): void {
     const nuevoAbono = this.form.value.monto;
-    console.log(`Abono realizado: $${nuevoAbono}`);
-    this.closeDialog();
+    if (nuevoAbono <= 0) {
+      this.message.create('warning', 'El monto debe ser mayor que 0');
+      return;
+    }
+
+    const token = localStorage.getItem('token') || '';
+
+    if (!token) {
+      this.message.create('error', 'No se encontró un token válido. Por favor, inicie sesión.');
+      return;
+    }
+
+    this.metaService.abonarMeta(this.metaId, nuevoAbono, token).subscribe({
+      next: (response) => {
+        console.log(`Abono realizado: $${nuevoAbono}`);
+        this.message.create('success', 'Abono realizado exitosamente.');
+        this.metaUpdated.emit();
+        this.closeDialog();
+      },
+      error: (err) => {
+        console.error('Error al realizar el abono:', err);
+        this.message.create('error', 'Hubo un error al realizar el abono. Intenta nuevamente.');
+      },
+    });
   }
 }

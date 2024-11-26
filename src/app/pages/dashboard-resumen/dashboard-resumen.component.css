@@ -1,0 +1,237 @@
+/* Estilos para la cabecera donde se encuentran el título y el select */
+.dashboard-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #f5f7fa;
+  border-bottom: 2px solid #dcdcdc;
+  padding: 20px;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  text-align: center;
+  padding: 40px;
+}
+
+.header-text {
+  padding: 40px;
+  flex: 1;
+  max-width: 1000px;
+}
+
+.header-text {
+  font-size: 1.6em;
+  color: #2b1d6f;
+  margin-bottom: 20px;
+}
+
+.highlight {
+  color: #7767df;
+}
+
+.header-text .highlight {
+  color: #7767df;
+}
+
+.header-text .black-text {
+  color: #000000;
+}
+
+.header-image {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end; /* Mover imagen más a la derecha */
+}
+
+.header-image img {
+  width: 30vw;
+  height: auto;
+}
+
+/*Parte del resumen financiero */
+
+
+.resumen-financiero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  padding: 40px;
+  border-radius: 8px;
+  max-width: 1200px;
+  margin: 80px auto;
+}
+
+h2 {
+  margin-bottom: 20px;
+  font-size: 1.5em;
+  color: #333;
+}
+
+/* Estilos para el select */
+.select-periodo {
+  display: flex;
+  gap: 5px;
+  width: 100%;
+}
+
+
+.select-periodo select {
+  padding: 8px;
+  font-size: 16px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  width: 30%;
+}
+
+/* Contenedor para la tabla y la gráfica */
+.tabla-y-grafica {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 30px;
+  width: 100%;
+}
+
+/* Estilo de la tabla */
+.tabla-resumen {
+  margin-bottom: 20px;
+  width: 30%;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.tabla-resumen table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.tabla-resumen table tr {
+  text-align: left;
+}
+
+.tabla-resumen table tr td {
+  padding: 10px;
+  font-size: 16px;
+}
+
+.tabla-resumen table th {
+  text-align: left;
+  font-size: 18px;
+  padding: 10px;
+  font-weight: bold;
+}
+
+.periodo-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border-bottom: 1px solid #ddd;
+}
+
+.periodo-label {
+  font-size: 14px;
+  color: #888;
+}
+
+.periodo-value {
+  font-size: 24px;
+  color: #333;
+  font-weight: bold;
+}
+
+.nz-icon {
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+/* Estilos de cada fila de la tabla */
+.blue-text, .red-text, .green-text {
+  font-size: 16px;
+  color: #333;
+}
+
+.blue-value, .red-value, .green-value {
+  font-size: 14px;
+  font-weight: lighter;
+  display: block; /* Para asegurarnos que el valor esté debajo */
+  margin-top: 5px;
+}
+
+.blue-value {
+  color: #5687F2;
+}
+
+.red-value {
+  color: #EAB308;
+}
+
+.green-value {
+  color: #4CAF50;
+}
+
+/* Gráfica */
+.grafica-container {
+  width: 50%;
+  max-width: 700px;
+}
+
+
+/* Estilo para la alerta */
+.alert-container {
+  width: 70%;
+  display: flex;
+  justify-content: end;
+}
+
+.nz-alert {
+  width: 100%;
+  max-width: 700px;
+  border-radius: 8px; /* Bordes redondeados */
+  padding: 15px; /* Espaciado interno */
+  font-size: 16px; /* Tamaño de texto */
+  font-weight: bold; /* Negrita en el texto */
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  gap: 10px;
+}
+
+/* Estilo para las alertas de éxito */
+.nz-alert-success {
+  background-color: #d4edda; /* Fondo verde claro */
+  border: 1px solid #28a745; /* Borde verde */
+  color: #155724; /* Texto verde oscuro */
+}
+
+/* Estilo para las alertas de advertencia */
+.nz-alert-warning {
+  background-color: #fff3cd; /* Fondo amarillo claro */
+  border: 1px solid #ffc107; /* Borde amarillo */
+  color: #856404; /* Texto amarillo oscuro */
+}
+
+/* Estilo para las alertas de error */
+.nz-alert-error {
+  background-color: #f8d7da; /* Fondo rojo claro */
+  border: 1px solid #dc3545; /* Borde rojo */
+  color: #721c24; /* Texto rojo oscuro */
+}
+
+/* Estilo para el ícono */
+.nz-alert .anticon {
+  font-size: 24px;
+  margin-right: 10px; /* Espaciado entre el ícono y el texto */
+}
+
+/* Estilo para el mensaje */
+.nz-alert .nz-alert-message {
+  font-size: 16px;
+  font-weight: bold;
+}

@@ -1,9 +1,11 @@
+/* Estilos para la cabecera donde se encuentran el título y el select */
 .dashboard-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   background-color: #f5f7fa;
   border-bottom: 2px solid #dcdcdc;
+  padding: 20px;
 }
 
 .header-content {
@@ -21,7 +23,7 @@
   max-width: 1000px;
 }
 
-.header-text{
+.header-text {
   font-size: 1.6em;
   color: #2b1d6f;
   margin-bottom: 20px;
@@ -29,7 +31,6 @@
 
 .highlight {
   color: #7767df;
-
 }
 
 .header-text .highlight {
@@ -51,10 +52,33 @@
   height: auto;
 }
 
+.header-container {
+  display: flex;
+  justify-content: space-between; /* Alinea los elementos con espacio entre ellos */
+  align-items: center; /* Centra los elementos verticalmente */
+  margin-bottom: 20px; /* Espaciado entre el título y las categorías */
+}
 
+.header-container h2 {
+  margin: 0; /* Elimina márgenes predeterminados */
+}
+
+/* Nuevo contenedor para el select */
+.select-container {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Espaciado entre el título y el select */
+}
+
+.select-container select {
+  font-size: 1em; /* Ajusta el tamaño de la fuente si es necesario */
+  padding: 5px 10px; /* Espaciado dentro del select */
+  border-radius: 5px; /* Bordes redondeados para el select */
+  border: 1px solid #ccc; /* Borde gris claro */
+}
 
 .categorias-container {
-  padding: 80px ;
+  padding: 80px;
   margin: 20px;
 }
 
@@ -83,6 +107,7 @@
   font-size: 1.2em;
   font-weight: bold;
   color: #7767df;
+  flex: 1;
 }
 
 .accordion-header i {
@@ -109,6 +134,7 @@
   display: flex;
   flex-direction: column;
 }
+
 .gasto-datos {
   display: flex;
   justify-content: space-between;
@@ -147,7 +173,6 @@
   justify-content: center;
 }
 
-
 .acciones {
   display: flex;
   align-items: center;
@@ -156,7 +181,7 @@
 }
 
 .custom-tag {
-  margin: 20px 20px 20px 60px ;
+  margin: 20px 20px 20px 60px;
   font-size: 1.4em !important; /* Tamaño de las letras */
   padding: 15px; /* Añade espacio interno para agrandar el recuadro */
   min-width: 250px; /* Ancho mínimo para el tag */
@@ -167,3 +192,42 @@
   border-radius: 5px;
 }
 
+.create-category .accordion-header {
+  background-color: #f2f2f2;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.create-category .accordion-header i {
+  color: #7767df;
+}
+
+.create-category .accordion-header:hover {
+  background-color: #e0e0e0;
+}
+
+.create-category .accordion-header:active {
+  background-color: #d1c6f0;
+}
+
+.delete-btn {
+  background-color: #ff4d4f;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 1em;
+  text-align: right;
+  padding: 6px 12px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.delete-btn:hover {
+  background-color: #d13d3d;
+  color: white;
+}

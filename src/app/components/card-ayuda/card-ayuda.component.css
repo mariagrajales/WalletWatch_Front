@@ -93,3 +93,7 @@
     transform: rotate(360deg);
   }
 }
+
+.e-card img.icon {
+  filter: brightness(0) invert(1); /* Esta propiedad convierte el color a blanco */
+}

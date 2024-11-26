@@ -3,6 +3,7 @@ import { Router, RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
 import { NgIf } from '@angular/common';
 import player from 'lottie-web';
+import {FooterComponent} from "./components/footer/footer.component";
 export function playerFactory() {
   return player;
 }
@@ -13,6 +14,7 @@ export function playerFactory() {
   standalone: true,
   imports: [
     HeaderComponent,
+    FooterComponent,
     RouterOutlet,
     NgIf,
   ],

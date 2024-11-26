@@ -1,28 +1,32 @@
 <div class="login-container">
   <div class="login-box">
     <div class="login-content">
-      <!-- Columna izquierda: Formulario de inicio de sesión -->
-      <div class="login-form">
+      <!-- Columna izquierda: Título, descripción y formulario -->
+      <div class="login-text">
         <h2>Iniciar Sesión</h2>
         <p>Empieza a gestionar y optimizar tus ahorros sin costo alguno.</p>
+      </div>
+      <div class="login-left">
 
-        <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
-          <label for="email">Correo electrónico</label>
-          <input formControlName="email" type="email" id="email" placeholder="Correo electrónico" />
+        <div class="login-form">
+          <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+            <label for="email">Correo electrónico</label>
+            <input formControlName="email" type="email" id="email" placeholder="Correo electrónico" />
 
-          <label for="password">Contraseña</label>
-          <input formControlName="password" type="password" id="password" placeholder="Contraseña" />
+            <label for="password">Contraseña</label>
+            <input formControlName="password" type="password" id="password" placeholder="Contraseña" />
 
-          <app-special-button label="Iniciar Sesión" (action)="onLogin()"></app-special-button>
-        </form>
+            <app-special-button label="Iniciar Sesión" (action)="onLogin()"></app-special-button>
+          </form>
 
-        <p class="register-link">
-          ¿Aún no tienes una cuenta? <a href="/register">Regístrate</a>
-        </p>
+          <p class="register-link">
+            ¿Aún no tienes una cuenta? <a href="/register">Regístrate</a>
+          </p>
+        </div>
       </div>
 
       <!-- Columna derecha: Animación Lottie -->
-      <div class="lottie-container">
+      <div class="login-right">
         <dotlottie-player
           src="https://lottie.host/7bf501c1-53dc-482e-b00a-443ca77d6265/HjQ7gTz3YH.json"
           background="transparent"

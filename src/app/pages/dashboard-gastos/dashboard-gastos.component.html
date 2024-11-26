@@ -11,16 +11,37 @@
     </div>
   </div>
 </div>
-
 <div class="categorias-container">
-  <h2>Categorías de Gasto</h2>
+  <div class="header-container">
+    <h2>Categorías de Gasto</h2>
+
+    <!-- Contenedor para el select -->
+    <div class="select-container">
+      <select [(ngModel)]="selectedPeriod" (change)="filterByPeriod()">
+        <option *ngFor="let option of periodOptions" [value]="option.value">
+          {{ option.name }}
+        </option>
+      </select>
+    </div>
+  </div>
+
   <div class="accordion">
-    <div class="accordion-item" *ngFor="let categoria of categorias">
+    <!-- Iteramos sobre las categorías recibidas -->
+    <div class="accordion-item" *ngFor="let categoria of filteredCategorias">
       <div class="accordion-header" (click)="toggleCategoria(categoria)">
         <span>{{ categoria.nombre }}</span>
-        <i
-          [class]="categoria.expandido ? 'icon-chevron-up' : 'icon-chevron-down'"
-        ></i>
+        <button
+          class="delete-btn"
+          nz-popconfirm
+          [nzPopconfirmTitle]="'¿Estás seguro de que deseas eliminar esta categoría?'"
+          (nzOnConfirm)="eliminarCategoria(categoria._id)"
+          nzPopconfirmPlacement="right"
+          (click)="stopEvent($event)"
+        >
+          <i class="icon-delete"></i> Eliminar
+        </button>
+
+        <i [class]="categoria.expandido ? 'icon-chevron-up' : 'icon-chevron-down'"></i>
       </div>
       <div *ngIf="categoria.expandido" class="accordion-body">
         <div class="categoria-content">
@@ -28,38 +49,33 @@
           <div class="gasto-info">
             <div class="gasto-datos">
               <div class="gasto-dato">
-                <span>Periodo:</span> {{ categoria.periodo }}
+                <span>Gastado:</span> ${{ categoria.gasto_actual }}
               </div>
               <div class="gasto-dato">
-                <span>Gastado:</span> ${{ categoria.gastoActual }}
-              </div>
-              <div class="gasto-dato">
-                <span>Límite:</span> ${{ categoria.gastoTotal }}
+                <span>Límite:</span> ${{ categoria.limite_gasto }}
               </div>
             </div>
             <div class="acciones">
-              <button class="registrar-btn">Registrar Gasto</button>
-              <nz-tag
-                [nzColor]="getTagColor(categoria.gastoActual, categoria.gastoTotal)"
-                *ngIf="categoria.gastoActual >= 0"
-                [ngClass]="'custom-tag'"
-              >
-                {{ getTagMessage(categoria.gastoActual, categoria.gastoTotal) }}
+              <button class="registrar-btn" (click)="openRegistrarGastoModal(categoria._id)">Registrar Gasto</button>
+              <nz-tag [nzColor]="getTagColor(categoria.gasto_actual, categoria.limite_gasto)" *ngIf="categoria.gasto_actual >= 0" [ngClass]="'custom-tag'">
+                {{ getTagMessage(categoria.gasto_actual, categoria.limite_gasto) }}
               </nz-tag>
-
             </div>
           </div>
           <!-- Gráfica -->
           <div class="gasto-grafica">
-            <app-grafica-gasto
-              [gastoTotal]="categoria.gastoTotal"
-              [gastoActual]="categoria.gastoActual"
-            ></app-grafica-gasto>
+            <app-grafica-gasto [gastoTotal]="categoria.limite_gasto" [gastoActual]="categoria.gasto_actual"></app-grafica-gasto>
           </div>
         </div>
-
       </div>
+    </div>
 
+    <!-- Elemento adicional para crear nueva categoría -->
+    <div class="accordion-item create-category">
+      <div class="accordion-header" (click)="openCreateCategoryModal()">
+        <span>Crear nueva categoría</span>
+        <i class="icon-chevron-down"></i>
+      </div>
     </div>
   </div>
 </div>
