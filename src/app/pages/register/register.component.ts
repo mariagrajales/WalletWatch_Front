@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
-import { GeoService } from '../../services/geo.service';
 import { FormsModule } from "@angular/forms";
 import { NzIconDirective } from "ng-zorro-antd/icon";
 import { NgForOf, NgIf } from "@angular/common";
@@ -41,40 +40,60 @@ export class RegisterComponent {
   };
 
   currentStep = 1;
-  estados: any[] = [];  // Aquí se guardarán los estados obtenidos
+  // Lista de estados manualmente agregada
+  estados: any[] = [
+    { id: 2, nombre: 'Aguascalientes', pais: 'México' },
+    { id: 3, nombre: 'Baja California', pais: 'México' },
+    { id: 4, nombre: 'Baja California Sur', pais: 'México' },
+    { id: 5, nombre: 'Campeche', pais: 'México' },
+    { id: 1, nombre: 'Chiapas', pais: 'México' },
+    { id: 31, nombre: 'Ciudad de México', pais: 'México' },
+    { id: 6, nombre: 'Coahuila', pais: 'México' },
+    { id: 7, nombre: 'Colima', pais: 'México' },
+    { id: 8, nombre: 'Durango', pais: 'México' },
+    { id: 13, nombre: 'Estado de México', pais: 'México' },
+    { id: 9, nombre: 'Guanajuato', pais: 'México' },
+    { id: 10, nombre: 'Guerrero', pais: 'México' },
+    { id: 11, nombre: 'Hidalgo', pais: 'México' },
+    { id: 12, nombre: 'Jalisco', pais: 'México' },
+    { id: 14, nombre: 'Michoacán', pais: 'México' },
+    { id: 15, nombre: 'Morelos', pais: 'México' },
+    { id: 16, nombre: 'Nayarit', pais: 'México' },
+    { id: 17, nombre: 'Nuevo León', pais: 'México' },
+    { id: 18, nombre: 'Oaxaca', pais: 'México' },
+    { id: 19, nombre: 'Puebla', pais: 'México' },
+    { id: 20, nombre: 'Querétaro', pais: 'México' },
+    { id: 21, nombre: 'Quintana Roo', pais: 'México' },
+    { id: 22, nombre: 'San Luis Potosí', pais: 'México' },
+    { id: 23, nombre: 'Sinaloa', pais: 'México' },
+    { id: 24, nombre: 'Sonora', pais: 'México' },
+    { id: 25, nombre: 'Tabasco', pais: 'México' },
+    { id: 26, nombre: 'Tamaulipas', pais: 'México' },
+    { id: 27, nombre: 'Tlaxcala', pais: 'México' },
+    { id: 28, nombre: 'Veracruz', pais: 'México' },
+    { id: 29, nombre: 'Yucatán', pais: 'México' },
+    { id: 30, nombre: 'Zacatecas', pais: 'México' }
+  ];
+
   isSubmitting = false;
 
-  constructor(private authService: AuthService, private router: Router, private message: NzMessageService,    private geoService: GeoService,  // Inyectamos el servicio
-    ) {}
+  constructor(private authService: AuthService, private router: Router, private message: NzMessageService) {}
 
   ngOnInit(): void {
-    console.log("ngOnInit ejecutado");  // Asegúrate de que este log se muestre en la consola
+    console.log("ngOnInit ejecutado");
+
+    // Comprobar si el token está en el localStorage
     const token = localStorage.getItem('token') || '';
     if (!token) {
       this.message.create('error', 'No se encontró un token válido. Por favor, inicie sesión.');
       return;
     }
-
-    // Llamar al servicio para obtener los estados
-    this.geoService.getEstados(token).subscribe({
-      next: (response) => {
-        this.estados = response;  // Asignamos la respuesta a la variable de estados
-        console.log('Estados cargados:', this.estados);
-      },
-      error: (err) => {
-        console.error('Error al obtener los estados:', err);
-        this.message.create('error', 'Hubo un error al cargar los estados.');
-      }
-    });
   }
-
-
 
   nextStep(): void {
     this.currentStep++;
   }
 
-  // Regresar al paso anterior
   prevStep(): void {
     this.currentStep--;
   }
