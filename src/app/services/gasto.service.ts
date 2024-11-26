@@ -7,12 +7,11 @@ import { environment } from '../../environments/environment';
   providedIn: 'root',
 })
 export class GastoService {
-  private apiUrl = `${environment.apiBaseUrl}/financial/categorias`; // Endpoint para obtener las categorías
-  private gastosUrl = `${environment.apiBaseUrl}/financial/gastos`; // Endpoint para registrar un gasto
+  private apiUrl = `${environment.apiBaseUrl}/financial/categorias`;
+  private gastosUrl = `${environment.apiBaseUrl}/financial/gastos`;
 
   constructor(private http: HttpClient) {}
 
-  // Obtener categorías por periodo
   getCategoriasByPeriodo(periodo: number, token: string): Observable<any[]> {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`,
@@ -22,7 +21,6 @@ export class GastoService {
     return this.http.get<any[]>(`${this.apiUrl}?periodo=${periodo}`, { headers });
   }
 
-  // Registrar un gasto
   registrarGasto(gasto: any, token: string): Observable<any> {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`,
@@ -32,7 +30,6 @@ export class GastoService {
     return this.http.post(this.gastosUrl, gasto, { headers });
   }
 
-  // Crear una nueva categoría
   crearCategoria(categoria: any, token: string): Observable<any> {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`,

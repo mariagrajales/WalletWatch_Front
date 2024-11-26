@@ -12,7 +12,6 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  // Método para obtener los detalles del usuario
   getUserDetails(token: string): Observable<any> {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`,

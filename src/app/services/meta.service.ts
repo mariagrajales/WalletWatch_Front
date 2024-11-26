@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { environment } from '../../environments/environment'; // Importar el archivo de entorno
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -49,7 +49,7 @@ export class MetaService {
     });
     return this.http.post(url, {}, {
       params: {
-        monto: monto.toString(), // El monto debe pasarse como parámetro de consulta
+        monto: monto.toString(),
       },
       headers: headers,
     });

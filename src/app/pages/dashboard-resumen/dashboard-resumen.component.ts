@@ -87,10 +87,10 @@ export class DashboardResumenComponent implements OnInit {
 
     if (porcentajeGasto < 75) {
       this.alertType = 'success';
-      this.alertMessage = `Bien hecho, ¡Tus gastos están bajo control!. Tienes un ${100 - porcentajeGasto}% de tu presupuesto disponible.`;
+      this.alertMessage = `Bien hecho, ¡Tus gastos están bajo control!. Tienes un ${(100 - porcentajeGasto).toFixed(2)}% de tu presupuesto disponible.`;
     } else if (porcentajeGasto >= 75 && porcentajeGasto < 100) {
       this.alertType = 'warning';
-      this.alertMessage = `Estás cerca del límite, ¡trabaja en reducir tus gastos! Queda un ${100 - porcentajeGasto}% de tu presupuesto.`;
+      this.alertMessage = `Estás cerca del límite, ¡trabaja en reducir tus gastos! Queda un ${(100 - porcentajeGasto).toFixed(2)}% de tu presupuesto.`;
     } else {
       this.alertType = 'error';
       this.alertMessage = `¡Cuidado! Has alcanzado el límite de tu presupuesto. Es necesario ajustar tus gastos.`;

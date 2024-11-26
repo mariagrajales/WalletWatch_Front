@@ -12,7 +12,6 @@ export class GeoService {
 
   constructor(private http: HttpClient) {}
 
-  // Función para obtener los estados
   getEstados(token: string): Observable<any[]> {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`,
