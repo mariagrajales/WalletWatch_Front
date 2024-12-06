@@ -6,7 +6,7 @@
     <nav class="main-nav">
       <a href="/dashboard">Metas de Ahorro</a>
       <a href="/dashboard-gastos">Presupuesto/Gastos</a>
-      <a href="#">Resumen</a>
+      <a href="/dashboard-resumen">Resumen</a>
       <nz-avatar nzIcon="user" nzSize="large"></nz-avatar>
       <button class="hamburger-menu" (click)="toggleMenu()">☰</button>
     </nav>
@@ -14,7 +14,6 @@
 
   <div *ngIf="menuOpen" class="dropdown-menu">
     <a href="/perfil">Perfil</a>
-    <a href="#">Cerrar sesión</a>
-    <a href="#">Ayuda</a>
+    <a href="#" (click)="logout()">Cerrar sesión</a> <!-- Agregar el método logout -->
   </div>
 </header>

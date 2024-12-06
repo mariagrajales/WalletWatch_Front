@@ -1,0 +1,96 @@
+<div class="dashboard-header">
+  <div class="header-content">
+    <div class="header-text">
+      <h1>Descubre como cada mes te acerca a tus <span class="highlight">metas.</span></h1>
+    </div>
+    <div class="header-image">
+      <img
+        src="assets/Writing.png"
+        alt="Ilustración de gastos bajo control"
+      />
+    </div>
+  </div>
+</div>
+
+
+
+<div class="resumen-financiero">
+  <h1>Resumen Financiero</h1>
+
+  <!-- Selector de periodo -->
+  <div class="select-periodo">
+    <select id="periodo" [(ngModel)]="selectedPeriod" (ngModelChange)="updatePeriodName()">
+      <option *ngFor="let option of periods" [value]="option.value">{{ option.name }}</option>
+    </select>
+    <div *ngIf="alertMessage" class="alert-container">
+      <nz-alert
+        [nzType]="alertType"
+        [nzMessage]="alertMessage"
+        nzCloseable
+        (nzOnClose)="alertMessage = ''">
+      </nz-alert>
+    </div>
+
+  </div>
+
+
+  <!-- Contenedor para la tabla y la gráfica -->
+  <div class="tabla-y-grafica">
+    <!-- Tabla con los datos -->
+    <div class="tabla-resumen">
+      <table>
+        <!-- Fila para el encabezado del periodo -->
+        <thead>
+        <tr>
+          <th colspan="2">
+            <div class="periodo-header">
+              <span class="periodo-label">Periodo</span>
+              <span class="periodo-value">{{ selectedPeriodName }}</span>
+            </div>
+          </th>
+        </tr>
+        </thead>
+
+        <!-- Fila para los valores -->
+        <tbody>
+        <tr>
+          <td>
+            <div>
+              <i nz-icon nzType="bank" nzTheme="outline" style="font-size: 20px; color: #5687F2; margin-right: 10px"></i>
+              <span class="blue-text">Limite Total</span>
+              <span class="blue-value">Total {{ limiteTotal | currency }}</span>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div>
+              <i nz-icon nzType="fall" nzTheme="outline" style="font-size: 20px; color: #EAB308; margin-right: 10px"></i>
+              <span class="red-text">Gasto Total</span>
+              <span class="red-value">Gastos: {{ gastoTotal | currency }}</span>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div>
+              <i nz-icon nzType="bar-chart" nzTheme="outline" style="font-size: 20px; color: #4CAF50; margin-right: 10px"></i>
+              <span class="green-text">Balance Final</span>
+              <span class="green-value">Balance: {{ balance | currency }}</span>
+            </div>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Gráfica de resumen -->
+    <div class="grafica-container">
+      <app-grafica-resumen
+        [gasto_total]="gastoTotal"
+        [limite_total]="limiteTotal"
+        [balance]="balance">
+      </app-grafica-resumen>
+    </div>
+  </div>
+</div>

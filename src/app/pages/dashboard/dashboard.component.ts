@@ -1,10 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { ModalMetaComponent } from '../../components/modal-meta/modal-meta.component';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { CardProgresoComponent } from '../../components/card-progreso/card-progreso.component';
-import { NgForOf } from '@angular/common';
+import { DatePipe, NgForOf } from '@angular/common';
+import { MetaService } from '../../services/meta.service';
+import { Router } from '@angular/router';
+import { EditMetaComponent } from "../../components/edit-meta/edit-meta.component";
+import {NzMessageService} from "ng-zorro-antd/message";
 
 @Component({
   selector: 'app-dashboard',
@@ -17,56 +21,61 @@ import { NgForOf } from '@angular/common';
     MatButtonModule,
     CardProgresoComponent,
     NgForOf,
+    ModalMetaComponent,
   ],
+  providers: [DatePipe]
 })
 export class DashboardComponent implements OnInit {
-  metas: any[] = []; // Array para almacenar las metas
-  openDropdownId: number | null = null; // Controla cuál dropdown está abierto
+  @ViewChild(ModalMetaComponent) modalMetaComponent: ModalMetaComponent | undefined;
+  metas: any[] = [];
 
-  constructor(private dialog: MatDialog) {}
+  constructor(
+    private message: NzMessageService,
+    private dialog: MatDialog,
+    private metaService: MetaService,
+    private router: Router,
+    public datePipe: DatePipe,
+  ) {}
 
   ngOnInit(): void {
-    this.cargarMetas(); // Simula la carga de datos desde un backend
+    const token = localStorage.getItem('token');
+    if (token) {
+      this.cargarMetas(token); // Llamar al método de carga si hay un token
+    } else {
+      alert('No estás autenticado. Inicia sesión.');
+      this.router.navigate(['/login']);
+    }
   }
 
-  cargarMetas(): void {
-    // Simula la respuesta del backend
-    this.metas = [
-      {
-        id: 1,
-        nombre: 'Vacaciones',
-        monto_objetivo: 10000,
-        monto_actual: 4500,
-        fecha_inicio: '2024-01-01',
-        fecha_objetivo: '2024-12-31',
+
+
+  // Método para cargar las metas desde el backend
+  cargarMetas(token: string): void {
+    this.metaService.getMetas(token).subscribe({
+      next: (response) => {
+        this.metas = response;  // Asignamos la respuesta al array de metas
+        console.log('Metas cargadas:', this.metas);
       },
-      {
-        id: 2,
-        nombre: 'Curso de inglés',
-        monto_objetivo: 5000,
-        monto_actual: 2000,
-        fecha_inicio: '2024-02-01',
-        fecha_objetivo: '2024-06-30',
-      },
-      {
-        id: 3,
-        nombre: 'Compra de computadora',
-        monto_objetivo: 20000,
-        monto_actual: 15000,
-        fecha_inicio: '2024-03-01',
-        fecha_objetivo: '2024-11-30',
-      },
-    ];
+      error: (error) => {
+        console.error('Error al cargar las metas:', error);
+        this.message.create('error','Hubo un error al cargar las Metas');
+      }
+    });
   }
 
-  toggleDropdown(id: number): void {
-    this.openDropdownId = this.openDropdownId === id ? null : id;
+  onMetaUpdated(): void {
+    this.cargarMetas(localStorage.getItem('token') || '');
   }
 
   openModal(): void {
-    this.dialog.open(ModalMetaComponent, {
+    const dialogRef = this.dialog.open(ModalMetaComponent, {
       width: '425px',
       panelClass: 'custom-dialog-container',
+    });
+
+    // Escuchar el evento de creación de la meta en el componente modal
+    dialogRef.componentInstance.metaCreada.subscribe(() => {
+      this.cargarMetas(localStorage.getItem('token') || '');  // Recargar las metas después de crear una nueva
     });
   }
 }

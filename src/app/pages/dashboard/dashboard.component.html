@@ -33,6 +33,7 @@
   </div>
 </div>
 
+
 <div class="mis-metas-section">
   <h2>Mis metas</h2>
   <div class="cards-container">
@@ -41,11 +42,10 @@
       [ahorroMeta]="meta.nombre"
       [monto_objetivo]="meta.monto_objetivo"
       [monto_actual]="meta.monto_actual"
-      [fecha_inicio]="meta.fecha_inicio"
-      [fecha_objetivo]="meta.fecha_objetivo">
+      [fecha_inicio]="datePipe.transform(meta.fecha_inicio, 'dd/MM/yyyy') || 'Fecha no disponible'"
+      [fecha_objetivo]="datePipe.transform(meta.fecha_objetivo, 'dd/MM/yyyy') || 'Fecha no disponible'"
+      [id]="meta._id"
+      (metaUpdated)="onMetaUpdated()">
     </app-card-progreso>
   </div>
 </div>
-
-
-

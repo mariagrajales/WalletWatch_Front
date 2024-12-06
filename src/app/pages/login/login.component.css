@@ -40,7 +40,7 @@
   padding: 40px;
   border-radius: 14px;
   width: 100%;
-  max-width: 700px;
+  max-width: 700px; /* Hacemos el contenedor más grande */
   min-height: 500px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   display: flex;
@@ -55,31 +55,33 @@
   width: 100%;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;  /* Para la versión móvil */
 }
 
-.login-form {
-  flex: 1;
+.login-left {
   padding-right: 20px;
-  text-align: center; /* Centra el texto en .login-form */
-
+  text-align: center; /* Centra el texto en .login-left */
 }
 
-.lottie-container {
-  flex: 1;
-  display: flex;
-  justify-content: center;
+.login-text {
+  width: 100%;
   align-items: center;
+  justify-items: center;
 }
 
-.login-box h2 {
+.login-left h2 {
   margin: 0;
-  font-size: 1.8em;
+  font-size: 2.2em;
   color: #333;
 }
 
-.login-box p {
+.login-left p {
   color: #666;
   margin-bottom: 20px;
+}
+
+.login-form {
+  width: 100%;
 }
 
 form {
@@ -137,3 +139,6 @@ form input:focus {
 .register-link a:hover {
   text-decoration: underline;
 }
+
+
+

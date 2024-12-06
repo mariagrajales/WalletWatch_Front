@@ -1,0 +1,31 @@
+<div class="custom-modal-backdrop">
+  <div class="custom-modal">
+    <!-- Cabecera del modal -->
+    <div class="modal-header">
+      <h2>Crear Nueva Categoría</h2>
+      <button class="close-button" (click)="closeDialog()">×</button>
+    </div>
+
+    <!-- Cuerpo del modal -->
+    <div class="modal-body">
+      <form [formGroup]="form" (ngSubmit)="crearCategoria()">
+        <div class="form-group">
+          <label for="nombre">Nombre de la categoría</label>
+          <input type="text" id="nombre" formControlName="nombre" placeholder="Nombre" required />
+        </div>
+
+        <div class="form-group">
+          <label for="limite_gasto">Límite de Gasto</label>
+          <input type="number" id="limite_gasto" formControlName="limite_gasto" placeholder="Límite de Gasto" required />
+        </div>
+
+        <!-- Información adicional para mejorar el diseño -->
+        <div class="info-text">
+          <p>Define un nombre y un límite de gasto para la nueva categoría. Asegúrate de elegir un límite adecuado para tus necesidades.</p>
+        </div>
+
+        <button class="registrar-btn" type="submit" [disabled]="form.invalid">Crear Categoría</button>
+      </form>
+    </div>
+  </div>
+</div>

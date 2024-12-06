@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import {Router, RouterLink} from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
-import {FormsModule} from "@angular/forms";
-import {NzIconDirective} from "ng-zorro-antd/icon";
-import {NgForOf, NgIf} from "@angular/common";
-import {SpecialButtonComponent} from "../../shared/special-button/special-button.component"; // Cambiar el path si es necesario
+import { FormsModule } from "@angular/forms";
+import { NzIconDirective } from "ng-zorro-antd/icon";
+import { NgForOf, NgIf } from "@angular/common";
+import { SpecialButtonComponent } from "../../shared/special-button/special-button.component";
+import {NzMessageService} from "ng-zorro-antd/message";
 
 @Component({
   selector: 'app-register',
@@ -32,39 +33,77 @@ export class RegisterComponent {
     confirmPassword: '',
     estado: null,
     direccion: '',
-    salarioMXN: null,
-    salarioUSD: null,
+    salario: null,
     balanceObjetivo: null,
     limiteGastos: null,
+    divisa: 'MXN',
   };
 
-  currentStep = 1; // Control para los pasos
-  estados = [
-    { id: 1, nombre: 'Aguascalientes' },
-    { id: 2, nombre: 'Baja California' },
-    // Más estados aquí...
+  currentStep = 1;
+  // Lista de estados manualmente agregada
+  estados: any[] = [
+    { id: 2, nombre: 'Aguascalientes', pais: 'México' },
+    { id: 3, nombre: 'Baja California', pais: 'México' },
+    { id: 4, nombre: 'Baja California Sur', pais: 'México' },
+    { id: 5, nombre: 'Campeche', pais: 'México' },
+    { id: 1, nombre: 'Chiapas', pais: 'México' },
+    { id: 31, nombre: 'Ciudad de México', pais: 'México' },
+    { id: 6, nombre: 'Coahuila', pais: 'México' },
+    { id: 7, nombre: 'Colima', pais: 'México' },
+    { id: 8, nombre: 'Durango', pais: 'México' },
+    { id: 13, nombre: 'Estado de México', pais: 'México' },
+    { id: 9, nombre: 'Guanajuato', pais: 'México' },
+    { id: 10, nombre: 'Guerrero', pais: 'México' },
+    { id: 11, nombre: 'Hidalgo', pais: 'México' },
+    { id: 12, nombre: 'Jalisco', pais: 'México' },
+    { id: 14, nombre: 'Michoacán', pais: 'México' },
+    { id: 15, nombre: 'Morelos', pais: 'México' },
+    { id: 16, nombre: 'Nayarit', pais: 'México' },
+    { id: 17, nombre: 'Nuevo León', pais: 'México' },
+    { id: 18, nombre: 'Oaxaca', pais: 'México' },
+    { id: 19, nombre: 'Puebla', pais: 'México' },
+    { id: 20, nombre: 'Querétaro', pais: 'México' },
+    { id: 21, nombre: 'Quintana Roo', pais: 'México' },
+    { id: 22, nombre: 'San Luis Potosí', pais: 'México' },
+    { id: 23, nombre: 'Sinaloa', pais: 'México' },
+    { id: 24, nombre: 'Sonora', pais: 'México' },
+    { id: 25, nombre: 'Tabasco', pais: 'México' },
+    { id: 26, nombre: 'Tamaulipas', pais: 'México' },
+    { id: 27, nombre: 'Tlaxcala', pais: 'México' },
+    { id: 28, nombre: 'Veracruz', pais: 'México' },
+    { id: 29, nombre: 'Yucatán', pais: 'México' },
+    { id: 30, nombre: 'Zacatecas', pais: 'México' }
   ];
 
-  constructor(private authService: AuthService, private router: Router) {}
+  isSubmitting = false;
 
-  // Ir al siguiente paso
+  constructor(private authService: AuthService, private router: Router, private message: NzMessageService) {}
+
+  ngOnInit(): void {
+    console.log("ngOnInit ejecutado");
+
+  }
+
   nextStep(): void {
     this.currentStep++;
   }
 
-  // Regresar al paso anterior
   prevStep(): void {
     this.currentStep--;
   }
 
-  // Enviar el formulario
   onSubmit(): void {
-    if (this.user.password !== this.user.confirmPassword) {
-      alert('Las contraseñas no coinciden');
+    if (this.isSubmitting) {
       return;
     }
 
-    // Mapeo de los datos al formato esperado por el backend
+    if (this.user.password !== this.user.confirmPassword) {
+      this.message.create('warning','Las contraseñas no coinciden');
+      return;
+    }
+
+    this.isSubmitting = true;
+
     const registerData = {
       correo: this.user.email,
       contrasena: this.user.password,
@@ -75,22 +114,25 @@ export class RegisterComponent {
       pais_id: 1,
       estado_id: this.user.estado,
       direccion: this.user.direccion,
-      salario_mxn: this.user.salarioMXN,
-      salario_usd: this.user.salarioUSD,
+      salario: this.user.salario,
+      divisa: this.user.divisa,
       balance_objetivo: this.user.balanceObjetivo,
       gasto_limite: this.user.limiteGastos,
     };
 
-    // Llamar al servicio para registrar
+    console.log('Datos enviados al backend:', registerData);
+
     this.authService.register(registerData).subscribe({
       next: (response) => {
-        alert('Registro exitoso');
+        this.message.create('success','Registro exitoso');
         console.log(response);
-        this.router.navigate(['/login']); // Redirigir al login
+        this.isSubmitting = false;
+        this.router.navigate(['/login']);
       },
       error: (err) => {
         console.error('Error en el registro:', err);
-        alert('Error al registrar. Intenta nuevamente.');
+        this.message.create('error','Error al registrar. Intenta nuevamente.');
+        this.isSubmitting = false;
       },
     });
   }
