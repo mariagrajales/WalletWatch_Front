@@ -21,11 +21,12 @@ import {NzMessageService} from "ng-zorro-antd/message";
     MatButtonModule,
     CardProgresoComponent,
     NgForOf,
+    ModalMetaComponent,
   ],
   providers: [DatePipe]
 })
 export class DashboardComponent implements OnInit {
-  @ViewChild(CardProgresoComponent) cardProgreso: CardProgresoComponent | undefined;
+  @ViewChild(ModalMetaComponent) modalMetaComponent: ModalMetaComponent | undefined;
   metas: any[] = [];
 
   constructor(
@@ -43,13 +44,6 @@ export class DashboardComponent implements OnInit {
     } else {
       alert('No estás autenticado. Inicia sesión.');
       this.router.navigate(['/login']);
-    }
-  }
-
-  ngAfterViewInit(): void {
-    // Puedes acceder a la referencia del componente `app-card-progreso` aquí.
-    if (this.cardProgreso) {
-      console.log(this.cardProgreso); // Verifica que la referencia funcione
     }
   }
 
@@ -74,9 +68,14 @@ export class DashboardComponent implements OnInit {
   }
 
   openModal(): void {
-    this.dialog.open(ModalMetaComponent, {
+    const dialogRef = this.dialog.open(ModalMetaComponent, {
       width: '425px',
       panelClass: 'custom-dialog-container',
+    });
+
+    // Escuchar el evento de creación de la meta en el componente modal
+    dialogRef.componentInstance.metaCreada.subscribe(() => {
+      this.cargarMetas(localStorage.getItem('token') || '');  // Recargar las metas después de crear una nueva
     });
   }
 }

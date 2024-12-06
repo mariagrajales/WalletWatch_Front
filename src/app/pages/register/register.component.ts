@@ -82,12 +82,6 @@ export class RegisterComponent {
   ngOnInit(): void {
     console.log("ngOnInit ejecutado");
 
-    // Comprobar si el token está en el localStorage
-    const token = localStorage.getItem('token') || '';
-    if (!token) {
-      this.message.create('error', 'No se encontró un token válido. Por favor, inicie sesión.');
-      return;
-    }
   }
 
   nextStep(): void {

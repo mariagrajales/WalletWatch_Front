@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
@@ -25,7 +25,7 @@ import {NzMessageService} from "ng-zorro-antd/message";
 })
 export class ModalMetaComponent {
   form: FormGroup;
-
+  @Output() metaCreada = new EventEmitter<void>();  // Emisor para la actualización de metas
   constructor(
     private message: NzMessageService,
     public dialogRef: MatDialogRef<ModalMetaComponent>,
@@ -105,6 +105,7 @@ export class ModalMetaComponent {
         next: (response) => {
           console.log('Meta creada exitosamente:', response);
           this.message.create('success','Meta creada exitosamente');
+          this.metaCreada.emit();  // Emitir el evento para indicar que la meta fue creada
           this.closeDialog();
         },
         error: (error) => {
